@@ -99,9 +99,9 @@ static void read_ElapsedMicroSecs(void *buf, struct tcp_estats *stats,
 static void read_StartTimeStamp(void *buf, struct tcp_estats *stats,
 				struct tcp_estats_var *vp)
 {
-	u64 msecs = (u64)stats->start_tv.tv_sec * 1000; /* convert to msecs */
-	msecs = msecs + (u64)stats->start_tv.tv_nsec/1000; /* convert nsec to msec */
-	memcpy(buf, &msecs, 8);
+	u64 usecs = (u64)stats->start_tv.tv_sec * 1000000; /* convert to usecs */
+	usecs = usecs + (u64)stats->start_tv.tv_nsec/1000; /* convert nsec to usec */
+	memcpy(buf, &usecs, 8);
 }
 
 static void read_PipeSize(void *buf, struct tcp_estats *stats,
