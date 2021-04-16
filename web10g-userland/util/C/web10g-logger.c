@@ -187,7 +187,7 @@ int main(int argc, char **argv)
 				flag = 1;
 			}
                         if (data->tv.usec < 100000000u)
-                                data->tv_usec += 1000000000u;
+                                data->tv.usec += 1000000000u;
 			printf("%u.%06u,", data->tv.sec, data->tv.usec);
 			printf("%s,%s,%s,%s,%s,", asc.cid, asc.local_addr, asc.local_port, asc.rem_addr, asc.rem_port);
 
