@@ -286,12 +286,11 @@ tcp_estats_put_time(struct sk_buff *msg, struct timespec64 *read_time) {
 	if (!nest)
 		return -EMSGSIZE;
 
-	ret = nla_put_u32(msg, NEA_TIME_SEC,
-	       lower_32_bits(read_time->tv_sec));
+	ret = nla_put_u32(msg, NEA_TIME_SEC, lower_32_bits(read_time->tv_sec));
 	if (ret<0)
 		return ret;
 	ret = nla_put_u32(msg, NEA_TIME_USEC,
-	       lower_32_bits(read_time->tv_nsec))/1000;
+                          lower_32_bits(read_time->tv_nsec/NSEC_PER_USEC));
 	if (ret<0)
 		return ret;
 	nla_nest_end(msg, nest);
@@ -1283,7 +1282,7 @@ static int __init tcp_estats_nl_init(void)
 	if (ret > 0) {
 		return ret;
 	}
-        
+
         printk(KERN_INFO "tcp_estats netlink module initialized.\n");
 
         return ret;

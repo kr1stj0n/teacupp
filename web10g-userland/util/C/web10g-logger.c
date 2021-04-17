@@ -1,6 +1,6 @@
 /*
- * Copyright (c) 2013-2014 Centre for Advanced Internet Architectures, 
- * Swinburne University of Technology. 
+ * Copyright (c) 2013-2014 Centre for Advanced Internet Architectures,
+ * Swinburne University of Technology.
  *
  * Author: Sebastian Zander (szander@swin.edu.au)
  *
@@ -67,7 +67,7 @@ int main(int argc, char **argv)
 	struct estats_connection* cp;
 	struct estats_connection_tuple_ascii asc;
 
-	int cid, i, flag = 0; 
+	int cid, i, flag = 0;
 	int opt;
 
 	char *strmask = NULL;
@@ -114,7 +114,7 @@ int main(int argc, char **argv)
 				exit(EXIT_FAILURE);
 			}
 			strcpy(exclude_ip, inet_ntoa(((struct sockaddr_in *) result->ai_addr)->sin_addr));
-			
+
 			freeaddrinfo(result);
 
 			if (inet_pton(AF_INET, exclude_ip, &(sa.sin_addr)) == 0) {
@@ -167,7 +167,7 @@ int main(int argc, char **argv)
 
 			Chk2Ign(estats_connection_tuple_as_strings(&asc, ct));
 			Chk2Ign(estats_read_vars(data, atoi(asc.cid), cl));
-	
+
 			if (data->length == 0)
 				continue;
 
@@ -180,14 +180,12 @@ int main(int argc, char **argv)
 					if (data->val[i].masked)
 						continue;
 					printf("%s", estats_var_array[i].name);
-					if (i != data->length-1) 
+					if (i != data->length-1)
 						printf(", ");
 				}
 				printf ("\n");
 				flag = 1;
 			}
-                        if (data->tv.usec < 100000000u)
-                                data->tv.usec += 1000000000u;
 			printf("%u.%06u,", data->tv.sec, data->tv.usec);
 			printf("%s,%s,%s,%s,%s,", asc.cid, asc.local_addr, asc.local_port, asc.rem_addr, asc.rem_port);
 

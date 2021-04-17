@@ -90,11 +90,11 @@ struct tcp_estats_var {
 	unsigned long		write_data;
 };
 
-extern struct tcp_estats_var   perf_var_array[];
-extern struct tcp_estats_var   path_var_array[];
-extern struct tcp_estats_var  stack_var_array[];
-extern struct tcp_estats_var    app_var_array[];
-extern struct tcp_estats_var   tune_var_array[];
+extern struct tcp_estats_var perf_var_array[];
+extern struct tcp_estats_var path_var_array[];
+extern struct tcp_estats_var stack_var_array[];
+extern struct tcp_estats_var app_var_array[];
+extern struct tcp_estats_var tune_var_array[];
 extern struct tcp_estats_var extras_var_array[];
 
 extern struct tcp_estats_var *estats_var_array[];
@@ -228,13 +228,13 @@ typedef enum ESTATS_PATH_INDEX {
 typedef enum ESTATS_STACK_INDEX {
 	ACTIVEOPEN,
 	MSSSENT,
-	MSSRCVD, 
+	MSSRCVD,
 	WINSCALESENT,
 	WINSCALERCVD,
-	TIMESTAMPS, 
+	TIMESTAMPS,
 	ECN,
-	WILLSENDSACK, 
-	WILLUSESACK, 
+	WILLSENDSACK,
+	WILLUSESACK,
 	STATE,
 	NAGLE,
 	MAXSSCWND,
